@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	
+	var results
+	
 	$('.player-bg').on('click', '.mood', function(){
 		var moodName = $(this).attr('name');
 		console.log(moodName);
@@ -8,14 +10,18 @@ $(document).ready(function(){
 			genres: moodName, bpm: { from: 120 }
 			}).then(function(tracks) {
 			console.log(tracks);
-		});
-		
-		var processTracks = function(tracks) {
+			
+		$('.mood').hide();		
+			
 			for (var i = 0; i < tracks.length; i++) {
-			console.log(tracks.title);
-  			}
-  			console.log(processTracks());
-		};
+				console.log(tracks[i]);
+				results += "<div><img src=" + tracks[i].artwork_url +"></div>"
+				$('.results').html(results);
+				console.log(results);
+  				}
+		});
+	
+		
 		
 	});
 		
@@ -30,4 +36,10 @@ $(document).ready(function(){
 
 
 
+/*
 
+
+
+
+
+*/
